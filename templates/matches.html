@@ -1,0 +1,1179 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Possible Matches
+{% endblock %}
+
+{% block content %}
+
+<div class="matches-page">
+
+    <!-- =====================================================
+         PAGE HEADER
+         ===================================================== -->
+
+    <div class="matches-header">
+
+        <div class="matches-header-icon">
+            ✨
+        </div>
+
+        <div>
+            <div class="matches-eyebrow">
+                SMART MATCHING
+            </div>
+
+            <h1>
+                Possible Matches
+            </h1>
+
+            <p>
+                Possible matches between your lost items and reported found items.
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MATCH RESULTS
+         ===================================================== -->
+
+    {% if matches %}
+
+        <div class="matches-results">
+
+            {% for match in matches %}
+
+                {% set lost = match["lost_item"] %}
+                {% set found = match["found_item"] %}
+                {% set score = match["similarity"] %}
+
+
+                <!-- =================================================
+                     MATCH CARD
+                     ================================================= -->
+
+                <div class="match-result-card">
+
+
+                    <!-- =============================================
+                         LOST ITEM
+                         ============================================= -->
+
+                    <div class="match-item">
+
+                        <div class="match-item-label lost-label">
+                            🔎 LOST ITEM
+                        </div>
+
+
+                        <!-- IMAGE -->
+
+                        <div class="match-image-box">
+
+                            {% if lost.get("image") %}
+
+                                <img
+                                    src="{{ url_for(
+                                        'static',
+                                        filename='uploads/item_images/' ~ lost.get('image')
+                                    ) }}"
+                                    alt="{{ lost.get('item_name', 'Lost Item') }}"
+                                    class="match-item-image"
+                                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                                >
+
+                                <div
+                                    class="match-no-image"
+                                    style="display: none;"
+                                >
+                                    📦
+                                    <span>Image unavailable</span>
+                                </div>
+
+                            {% else %}
+
+                                <div class="match-no-image">
+                                    📦
+                                    <span>No image uploaded</span>
+                                </div>
+
+                            {% endif %}
+
+                        </div>
+
+
+                        <!-- ITEM INFORMATION -->
+
+                        <div class="match-item-info">
+
+                            <h2>
+                                {{ lost.get("item_name", "Lost Item") }}
+                            </h2>
+
+
+                            {% if lost.get("category") %}
+
+                                <div class="match-info-row">
+                                    <span class="info-icon">🏷️</span>
+
+                                    <span>
+                                        <strong>Category:</strong>
+                                        {{ lost.get("category") }}
+                                    </span>
+                                </div>
+
+                            {% endif %}
+
+
+                            {% if lost.get("location") %}
+
+                                <div class="match-info-row">
+                                    <span class="info-icon">📍</span>
+
+                                    <span>
+                                        <strong>Location:</strong>
+                                        {{ lost.get("location") }}
+                                    </span>
+                                </div>
+
+                            {% endif %}
+
+
+                            {% if lost.get("lost_date") %}
+
+                                <div class="match-info-row">
+                                    <span class="info-icon">📅</span>
+
+                                    <span>
+                                        <strong>Lost Date:</strong>
+                                        {{ lost.get("lost_date") }}
+                                    </span>
+                                </div>
+
+                            {% endif %}
+
+
+                            {% if lost.get("description") %}
+
+                                <div class="match-description">
+
+                                    <strong>Description:</strong>
+
+                                    <p>
+                                        {{ lost.get("description") }}
+                                    </p>
+
+                                </div>
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         SCORE
+                         ================================================= -->
+
+                    <div class="match-score-area">
+
+                        <div class="match-score-circle">
+
+                            <span class="match-score-number">
+                                {{ "%.0f"|format(score) }}%
+                            </span>
+
+                            <span class="match-score-word">
+                                MATCH
+                            </span>
+
+                        </div>
+
+
+                        <div class="match-score-line"></div>
+
+
+                        <div class="match-vs">
+                            VS
+                        </div>
+
+
+                        <div class="match-level {{ match['match_level'] }}">
+                            {{ match["match_label"] }}
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         FOUND ITEM
+                         ================================================= -->
+
+                    <div class="match-item">
+
+                        <div class="match-item-label found-label">
+                            📦 FOUND ITEM
+                        </div>
+
+
+                        <!-- IMAGE -->
+
+                        <div class="match-image-box">
+
+                            {% if found.get("image") %}
+
+                                <img
+                                    src="{{ url_for(
+                                        'static',
+                                        filename='uploads/item_images/' ~ found.get('image')
+                                    ) }}"
+                                    alt="{{ found.get('item_name', 'Found Item') }}"
+                                    class="match-item-image"
+                                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                                >
+
+                                <div
+                                    class="match-no-image"
+                                    style="display: none;"
+                                >
+                                    📦
+                                    <span>Image unavailable</span>
+                                </div>
+
+                            {% else %}
+
+                                <div class="match-no-image">
+                                    📦
+                                    <span>No image uploaded</span>
+                                </div>
+
+                            {% endif %}
+
+                        </div>
+
+
+                        <!-- ITEM INFORMATION -->
+
+                        <div class="match-item-info">
+
+                            <h2>
+                                {{ found.get("item_name", "Found Item") }}
+                            </h2>
+
+
+                            {% if found.get("category") %}
+
+                                <div class="match-info-row">
+                                    <span class="info-icon">🏷️</span>
+
+                                    <span>
+                                        <strong>Category:</strong>
+                                        {{ found.get("category") }}
+                                    </span>
+                                </div>
+
+                            {% endif %}
+
+
+                            {% if found.get("location") %}
+
+                                <div class="match-info-row">
+                                    <span class="info-icon">📍</span>
+
+                                    <span>
+                                        <strong>Location:</strong>
+                                        {{ found.get("location") }}
+                                    </span>
+                                </div>
+
+                            {% endif %}
+
+
+                            {% if found.get("found_date") %}
+
+                                <div class="match-info-row">
+                                    <span class="info-icon">📅</span>
+
+                                    <span>
+                                        <strong>Found Date:</strong>
+                                        {{ found.get("found_date") }}
+                                    </span>
+                                </div>
+
+                            {% endif %}
+
+
+                            {% if found.get("description") %}
+
+                                <div class="match-description">
+
+                                    <strong>Description:</strong>
+
+                                    <p>
+                                        {{ found.get("description") }}
+                                    </p>
+
+                                </div>
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+
+        <!-- =====================================================
+             HELP BOX
+             ===================================================== -->
+
+        <div class="matches-help-box">
+
+            <div class="help-icon">
+                💡
+            </div>
+
+            <div>
+
+                <strong>
+                    Try reporting your lost or found item with more details.
+                </strong>
+
+                <p>
+                    Higher percentages mean the lost and found item have more similarities.
+                </p>
+
+            </div>
+
+        </div>
+
+
+    {% else %}
+
+
+        <!-- =====================================================
+             NO MATCHES
+             ===================================================== -->
+
+        <div class="no-matches-card">
+
+            <div class="no-matches-icon">
+                🔍
+            </div>
+
+            <h2>
+                No Matches Found
+            </h2>
+
+            <p>
+                We could not find any possible matches between the
+                reported lost and found items.
+            </p>
+
+            <p>
+                Try adding more details such as item name, category,
+                location and description.
+            </p>
+
+        </div>
+
+    {% endif %}
+
+
+    <!-- =====================================================
+         BACK BUTTON
+         ===================================================== -->
+
+    <div class="matches-back">
+
+        <a
+            href="{{ url_for('dashboard') }}"
+            class="back-dashboard-button"
+        >
+            ← Back to Dashboard
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     MATCHES PAGE CSS
+     ========================================================= -->
+
+<style>
+
+    /* =========================================================
+       PAGE
+       ========================================================= */
+
+    .matches-page {
+        width: 100%;
+        min-height: calc(100vh - 82px);
+
+        padding: 45px 20px 70px;
+
+        background:
+            radial-gradient(
+                circle at 5% 15%,
+                rgba(99, 102, 241, 0.10),
+                transparent 28%
+            ),
+            radial-gradient(
+                circle at 95% 75%,
+                rgba(16, 185, 129, 0.10),
+                transparent 28%
+            ),
+            #f8fafc;
+
+        text-align: center;
+    }
+
+
+    /* =========================================================
+       HEADER
+       ========================================================= */
+
+    .matches-header {
+        width: 100%;
+        max-width: 900px;
+
+        margin: 0 auto 40px;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        gap: 18px;
+
+        text-align: left;
+    }
+
+
+    .matches-header-icon {
+        width: 58px;
+        height: 58px;
+
+        flex-shrink: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 17px;
+
+        background:
+            linear-gradient(
+                135deg,
+                #4f46e5,
+                #7c3aed
+            );
+
+        color: white;
+
+        font-size: 27px;
+
+        box-shadow:
+            0 12px 30px rgba(79, 70, 229, 0.25);
+    }
+
+
+    .matches-eyebrow {
+        margin-bottom: 2px;
+
+        color: #4f46e5;
+
+        font-size: 11px;
+        font-weight: 800;
+
+        letter-spacing: 4px;
+    }
+
+
+    .matches-header h1 {
+        margin: 0;
+
+        color: #111827;
+
+        font-size: 32px;
+        font-weight: 800;
+    }
+
+
+    .matches-header p {
+        margin: 5px 0 0;
+
+        color: #64748b;
+
+        font-size: 14px;
+    }
+
+
+    /* =========================================================
+       RESULTS
+       ========================================================= */
+
+    .matches-results {
+        width: 100%;
+        max-width: 1200px;
+
+        margin: 0 auto;
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 28px;
+    }
+
+
+    /* =========================================================
+       MATCH RESULT CARD
+       ========================================================= */
+
+    .match-result-card {
+        width: 100%;
+
+        padding: 25px;
+
+        display: grid;
+
+        grid-template-columns:
+            minmax(0, 1fr)
+            130px
+            minmax(0, 1fr);
+
+        align-items: center;
+
+        gap: 22px;
+
+        background: rgba(255, 255, 255, 0.96);
+
+        border: 1px solid #e2e8f0;
+
+        border-top: 3px solid #6366f1;
+
+        border-radius: 22px;
+
+        box-shadow:
+            0 18px 45px rgba(15, 23, 42, 0.08);
+    }
+
+
+    /* =========================================================
+       ITEM CARD
+       ========================================================= */
+
+    .match-item {
+        width: 100%;
+        min-width: 0;
+
+        padding: 16px;
+
+        background: white;
+
+        border: 1px solid #e2e8f0;
+
+        border-radius: 17px;
+
+        box-shadow:
+            0 8px 25px rgba(15, 23, 42, 0.05);
+
+        text-align: left;
+    }
+
+
+    /* =========================================================
+       LABEL
+       ========================================================= */
+
+    .match-item-label {
+        display: inline-flex;
+
+        align-items: center;
+
+        padding: 6px 12px;
+
+        margin-bottom: 13px;
+
+        border-radius: 30px;
+
+        font-size: 10px;
+        font-weight: 800;
+
+        letter-spacing: 1px;
+    }
+
+
+    .lost-label {
+        background: #fff7ed;
+        color: #c2410c;
+    }
+
+
+    .found-label {
+        background: #ecfdf5;
+        color: #047857;
+    }
+
+
+    /* =========================================================
+       IMAGE
+       ========================================================= */
+
+    .match-image-box {
+        width: 100%;
+        height: 190px;
+
+        overflow: hidden;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 12px;
+
+        background:
+            linear-gradient(
+                135deg,
+                #f1f5f9,
+                #e2e8f0
+            );
+    }
+
+
+    .match-item-image {
+        width: 100%;
+        height: 100%;
+
+        display: block;
+
+        object-fit: contain;
+
+        background: #eef2f7;
+    }
+
+
+    .match-no-image {
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+        justify-content: center;
+
+        gap: 7px;
+
+        color: #94a3b8;
+
+        font-size: 35px;
+    }
+
+
+    .match-no-image span {
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+
+    /* =========================================================
+       ITEM INFORMATION
+       ========================================================= */
+
+    .match-item-info {
+        padding: 17px 4px 5px;
+    }
+
+
+    .match-item-info h2 {
+        margin: 0 0 13px;
+
+        color: #111827;
+
+        font-size: 20px;
+        font-weight: 800;
+
+        word-break: break-word;
+    }
+
+
+    .match-info-row {
+        display: flex;
+
+        align-items: flex-start;
+
+        gap: 8px;
+
+        margin-bottom: 8px;
+
+        color: #64748b;
+
+        font-size: 13px;
+
+        line-height: 1.5;
+    }
+
+
+    .match-info-row strong {
+        color: #374151;
+    }
+
+
+    .info-icon {
+        flex-shrink: 0;
+    }
+
+
+    /* =========================================================
+       DESCRIPTION
+       ========================================================= */
+
+    .match-description {
+        margin-top: 12px;
+        padding-top: 12px;
+
+        border-top: 1px solid #eef2f7;
+
+        color: #64748b;
+
+        font-size: 13px;
+
+        line-height: 1.6;
+    }
+
+
+    .match-description strong {
+        color: #374151;
+    }
+
+
+    .match-description p {
+        margin: 5px 0 0;
+
+        word-break: break-word;
+    }
+
+
+    /* =========================================================
+       SCORE AREA
+       ========================================================= */
+
+    .match-score-area {
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+        justify-content: center;
+
+        gap: 12px;
+    }
+
+
+    .match-score-circle {
+        width: 86px;
+        height: 86px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+        justify-content: center;
+
+        border: 5px solid #a7f3d0;
+
+        border-radius: 50%;
+
+        background: white;
+
+        box-shadow:
+            0 8px 25px rgba(16, 185, 129, 0.12);
+    }
+
+
+    .match-score-number {
+        color: #059669;
+
+        font-size: 20px;
+        font-weight: 900;
+
+        line-height: 1;
+    }
+
+
+    .match-score-word {
+        margin-top: 4px;
+
+        color: #059669;
+
+        font-size: 8px;
+        font-weight: 900;
+
+        letter-spacing: 1px;
+    }
+
+
+    .match-score-line {
+        width: 90px;
+        height: 2px;
+
+        background:
+            linear-gradient(
+                90deg,
+                transparent,
+                #a7f3d0,
+                transparent
+            );
+    }
+
+
+    .match-vs {
+        width: 32px;
+        height: 32px;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 50%;
+
+        background:
+            linear-gradient(
+                135deg,
+                #6366f1,
+                #7c3aed
+            );
+
+        color: white;
+
+        font-size: 9px;
+        font-weight: 900;
+
+        box-shadow:
+            0 6px 15px rgba(99, 102, 241, 0.25);
+    }
+
+
+    /* =========================================================
+       MATCH LEVEL
+       ========================================================= */
+
+    .match-level {
+        padding: 6px 11px;
+
+        border-radius: 30px;
+
+        font-size: 9px;
+        font-weight: 900;
+
+        letter-spacing: 0.7px;
+
+        white-space: nowrap;
+    }
+
+
+    .match-level.high {
+        background: #dcfce7;
+        color: #15803d;
+    }
+
+
+    .match-level.medium {
+        background: #fef3c7;
+        color: #b45309;
+    }
+
+
+    .match-level.low {
+        background: #f1f5f9;
+        color: #475569;
+    }
+
+
+    /* =========================================================
+       HELP BOX
+       ========================================================= */
+
+    .matches-help-box {
+        width: 100%;
+        max-width: 1200px;
+
+        margin: 25px auto 0;
+
+        padding: 17px 25px;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 16px;
+
+        background: white;
+
+        border: 1px solid #e2e8f0;
+
+        border-radius: 15px;
+
+        box-shadow:
+            0 8px 25px rgba(15, 23, 42, 0.05);
+
+        text-align: left;
+    }
+
+
+    .help-icon {
+        font-size: 24px;
+        flex-shrink: 0;
+    }
+
+
+    .matches-help-box strong {
+        color: #374151;
+
+        font-size: 13px;
+    }
+
+
+    .matches-help-box p {
+        margin: 3px 0 0;
+
+        color: #94a3b8;
+
+        font-size: 11px;
+    }
+
+
+    /* =========================================================
+       NO MATCHES
+       ========================================================= */
+
+    .no-matches-card {
+        width: 100%;
+        max-width: 700px;
+
+        margin: 20px auto;
+
+        padding: 55px 30px;
+
+        background: white;
+
+        border: 1px solid #e2e8f0;
+
+        border-radius: 22px;
+
+        box-shadow:
+            0 15px 40px rgba(15, 23, 42, 0.07);
+    }
+
+
+    .no-matches-icon {
+        margin-bottom: 15px;
+
+        font-size: 55px;
+    }
+
+
+    .no-matches-card h2 {
+        margin-bottom: 10px;
+
+        color: #111827;
+    }
+
+
+    .no-matches-card p {
+        max-width: 550px;
+
+        margin: 7px auto;
+
+        color: #64748b;
+
+        font-size: 14px;
+    }
+
+
+    /* =========================================================
+       BACK BUTTON
+       ========================================================= */
+
+    .matches-back {
+        margin-top: 28px;
+    }
+
+
+    .back-dashboard-button {
+        display: inline-flex;
+
+        align-items: center;
+        justify-content: center;
+
+        padding: 11px 18px;
+
+        border-radius: 10px;
+
+        background: #eef2ff;
+
+        color: #4f46e5;
+
+        font-size: 13px;
+        font-weight: 700;
+
+        transition: all 0.2s ease;
+    }
+
+
+    .back-dashboard-button:hover {
+        background: #e0e7ff;
+
+        transform: translateY(-2px);
+    }
+
+
+    /* =========================================================
+       TABLET
+       ========================================================= */
+
+    @media (max-width: 950px) {
+
+        .match-result-card {
+            grid-template-columns:
+                1fr
+                100px
+                1fr;
+
+            gap: 15px;
+
+            padding: 18px;
+        }
+
+
+        .match-image-box {
+            height: 160px;
+        }
+
+    }
+
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
+    @media (max-width: 700px) {
+
+        .matches-page {
+            padding: 35px 12px 55px;
+        }
+
+
+        .matches-header {
+            flex-direction: column;
+
+            text-align: center;
+
+            margin-bottom: 30px;
+        }
+
+
+        .matches-header h1 {
+            font-size: 27px;
+        }
+
+
+        .matches-header p {
+            font-size: 13px;
+        }
+
+
+        .match-result-card {
+            grid-template-columns: 1fr;
+
+            gap: 18px;
+
+            padding: 15px;
+        }
+
+
+        .match-score-area {
+            order: 2;
+
+            flex-direction: row;
+
+            padding: 8px 0;
+        }
+
+
+        .match-item:first-child {
+            order: 1;
+        }
+
+
+        .match-item:last-child {
+            order: 3;
+        }
+
+
+        .match-score-line {
+            width: 35px;
+        }
+
+
+        .match-image-box {
+            height: 210px;
+        }
+
+
+        .matches-help-box {
+            align-items: flex-start;
+
+            padding: 15px;
+        }
+
+    }
+
+
+    /* =========================================================
+       SMALL MOBILE
+       ========================================================= */
+
+    @media (max-width: 430px) {
+
+        .match-image-box {
+            height: 180px;
+        }
+
+
+        .match-item-info h2 {
+            font-size: 18px;
+        }
+
+
+        .match-score-circle {
+            width: 76px;
+            height: 76px;
+        }
+
+
+        .match-score-number {
+            font-size: 18px;
+        }
+
+    }
+
+</style>
+
+{% endblock %}

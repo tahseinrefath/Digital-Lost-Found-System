@@ -1,0 +1,160 @@
+{
+    "page_title": "Digitales Fundbüro",
+    "app_name": "Digitales Fundbüro",
+
+    "nav_home": "Startseite",
+    "nav_login": "Anmelden",
+    "nav_register": "Registrieren",
+    "nav_dashboard": "Dashboard",
+    "nav_report_lost": "Verlust melden",
+    "nav_report_found": "Fund melden",
+    "nav_matches": "Übereinstimmungen",
+
+    "language_label": "Sprache",
+
+    "hero_title": "Digitales Fundbüro",
+    "hero_text": "Eine einfache und intelligente Möglichkeit, verlorene Gegenstände zu melden, gefundene Gegenstände zu melden und mögliche Übereinstimmungen zu finden.",
+
+    "report_lost_item": "Verlorenen Gegenstand melden",
+    "report_found_item": "Gefundenen Gegenstand melden",
+
+    "feature_report_lost_title": "Verlorenen Gegenstand melden",
+    "feature_report_lost_text": "Melden Sie einen verlorenen Gegenstand mit Name, Kategorie, Ort, Datum, Beschreibung und Bild.",
+
+    "feature_report_found_title": "Gefundenen Gegenstand melden",
+    "feature_report_found_text": "Melden Sie einen gefundenen Gegenstand, damit der Besitzer ihn zurückbekommen kann.",
+
+    "feature_smart_match_title": "Intelligente Suche",
+    "feature_smart_match_text": "Unser Matching-System vergleicht Verlust- und Fundmeldungen, um mögliche Übereinstimmungen zu erkennen.",
+
+    "latest_lost_items": "Kürzlich gemeldete verlorene Gegenstände",
+    "latest_lost_items_text": "Gegenstände, die kürzlich als verloren gemeldet wurden.",
+
+    "latest_found_items": "Kürzlich gemeldete gefundene Gegenstände",
+    "latest_found_items_text": "Gegenstände, die kürzlich als gefunden gemeldet wurden.",
+
+    "no_lost_items": "Noch keine verlorenen Gegenstände",
+    "no_lost_items_text": "Bisher wurden keine verlorenen Gegenstände gemeldet.",
+
+    "no_found_items": "Noch keine gefundenen Gegenstände",
+    "no_found_items_text": "Bisher wurden keine gefundenen Gegenstände gemeldet.",
+
+    "help_find_items_title": "Helfen Sie dabei, verlorene Gegenstände mit ihren Besitzern zu verbinden",
+    "help_find_items_text": "Melden Sie einen verlorenen oder gefundenen Gegenstand und helfen Sie jemandem, sein Eigentum zurückzubekommen.",
+
+    "login_title": "Anmelden",
+    "login_subtitle": "Melden Sie sich bei Ihrem digitalen Fundbüro-Konto an.",
+
+    "register_title": "Konto erstellen",
+    "register_subtitle": "Erstellen Sie Ihr Konto im digitalen Fundbüro.",
+
+    "name_label": "Name",
+    "email_label": "E-Mail",
+    "password_label": "Passwort",
+    "confirm_password_label": "Passwort bestätigen",
+
+    "password_policy": "Das Passwort muss mindestens 8 Zeichen enthalten.",
+
+    "login_button": "Anmelden",
+    "register_button": "Konto erstellen",
+    "logout_button": "Abmelden",
+
+    "remember_me": "Angemeldet bleiben",
+
+    "login_help": "Sie haben noch kein Konto?",
+    "register_help": "Sie haben bereits ein Konto?",
+
+    "go_register": "Konto erstellen",
+    "go_login": "Anmelden",
+
+    "terms_agreement": "Ich stimme den Nutzungsbedingungen zu.",
+
+    "dashboard_title": "Dashboard",
+    "dashboard_subtitle": "Verwalten Sie Ihre Verlust- und Fundmeldungen.",
+
+    "my_lost_items": "Meine verlorenen Gegenstände",
+    "my_lost_items_text": "Sehen und verwalten Sie die Gegenstände, die Sie als verloren gemeldet haben.",
+
+    "my_found_items": "Meine gefundenen Gegenstände",
+    "my_found_items_text": "Sehen und verwalten Sie die Gegenstände, die Sie als gefunden gemeldet haben.",
+
+    "smart_matching_title": "Intelligente Suche",
+    "smart_matching_text": "Finden Sie mögliche Übereinstimmungen zwischen verlorenen und gefundenen Gegenständen.",
+
+    "view_matches": "Übereinstimmungen anzeigen",
+    "back_to_dashboard": "Zurück zum Dashboard",
+
+    "item_name_label": "Name des Gegenstands",
+    "category_label": "Kategorie",
+    "location_label": "Ort",
+    "date_lost_label": "Verlustdatum",
+    "date_found_label": "Funddatum",
+    "description_label": "Beschreibung",
+    "image_label": "Bild",
+    "status_label": "Status",
+    "reported_on": "Gemeldet am",
+
+    "image_help": "Sie können ein PNG-, JPG-, JPEG-, GIF- oder WEBP-Bild mit einer maximalen Größe von 5 MB hochladen.",
+
+    "report_lost_title": "Verlorenen Gegenstand melden",
+    "report_lost_subtitle": "Geben Sie die Details des verlorenen Gegenstands ein.",
+
+    "report_found_title": "Gefundenen Gegenstand melden",
+    "report_found_subtitle": "Geben Sie die Details des gefundenen Gegenstands ein.",
+
+    "submit_lost_report": "Verlustmeldung senden",
+    "submit_found_report": "Fundmeldung senden",
+    "cancel_button": "Abbrechen",
+
+    "matches_title": "Mögliche Übereinstimmungen",
+    "matches_subtitle": "Dies sind gefundene Gegenstände, die möglicherweise zu Ihren verlorenen Gegenständen passen.",
+
+    "match_label": "Übereinstimmung",
+    "similarity_label": "Ähnlichkeit",
+
+    "lost_item_label": "Verlorener Gegenstand",
+    "found_item_label": "Gefundener Gegenstand",
+
+    "high_match": "Hohe Übereinstimmung",
+    "medium_match": "Mittlere Übereinstimmung",
+    "low_match": "Geringe Übereinstimmung",
+
+    "no_matches": "Keine Übereinstimmungen gefunden",
+    "no_matches_text": "Derzeit wurden keine möglichen Übereinstimmungen gefunden.",
+
+    "matches_help": "Name, Kategorie, Ort, Beschreibung und Datum werden verglichen, um die Übereinstimmung zu bestimmen.",
+
+    "status_lost": "Verloren",
+    "status_found": "Gefunden",
+    "status_matched": "Übereinstimmung",
+    "status_claimed": "Abgeholt",
+
+    "success_registered": "Registrierung erfolgreich. Sie können sich jetzt anmelden.",
+    "success_login": "Anmeldung erfolgreich.",
+    "success_logout": "Sie wurden erfolgreich abgemeldet.",
+    "success_lost_report": "Verlustmeldung erfolgreich erstellt.",
+    "success_found_report": "Fundmeldung erfolgreich erstellt.",
+
+    "error_invalid_login": "E-Mail oder Passwort ist falsch.",
+    "error_email_exists": "Für diese E-Mail-Adresse existiert bereits ein Konto.",
+    "error_password_mismatch": "Die Passwörter stimmen nicht überein.",
+    "error_invalid_password": "Das Passwort ist ungültig.",
+    "error_required_fields": "Bitte füllen Sie alle erforderlichen Felder aus.",
+    "error_invalid_image": "Die Bilddatei ist ungültig.",
+    "error_file_too_large": "Die Datei ist zu groß. Die maximale Größe beträgt 5 MB.",
+
+    "footer_text": "Ein digitales System, das Menschen dabei hilft, ihre verlorenen Gegenstände wiederzufinden.",
+
+    "select_category": "Kategorie auswählen",
+
+    "mobile_phone": "Mobiltelefon",
+    "wallet": "Geldbörse",
+    "bag": "Tasche",
+    "id_card": "Personalausweis",
+    "keys": "Schlüssel",
+    "documents": "Dokumente",
+    "electronics": "Elektronik",
+    "jewellery": "Schmuck",
+    "clothing": "Kleidung",
+    "other": "Sonstiges"
+}

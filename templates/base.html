@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="{{ current_language|default('en') }}"
+      dir="{{ page_direction|default('ltr') }}">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}
+            Digital Lost & Found
+        {% endblock %}
+    </title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVIGATION BAR
+    ========================== -->
+
+    <nav class="navbar">
+
+        <a class="brand-logo"
+           href="{{ url_for('home') }}">
+
+            <img
+                src="{{ url_for('static', filename='images/logo-cropped.png') }}"
+                alt="Digital Lost & Found Logo"
+            >
+
+        </a>
+
+
+        <div class="nav-links">
+
+            <a href="{{ url_for('home') }}">
+                {{ t("nav_home") if t is defined else "Home" }}
+            </a>
+
+
+            {% if session.get("user_id") %}
+
+                <a href="{{ url_for('dashboard') }}">
+                    {{ t("nav_dashboard") if t is defined else "Dashboard" }}
+                </a>
+
+                <a href="{{ url_for('lost.report_lost') }}">
+                    {{ t("nav_report_lost") if t is defined else "Report Lost" }}
+                </a>
+
+                <a href="{{ url_for('found.report_found') }}">
+                    {{ t("nav_report_found") if t is defined else "Report Found" }}
+                </a>
+
+                <a href="{{ url_for('match.matches') }}">
+                    {{ t("nav_matches") if t is defined else "Matches" }}
+                </a>
+
+                <a href="{{ url_for('auth.logout') }}">
+                    {{ t("logout_button") if t is defined else "Logout" }}
+                </a>
+
+            {% else %}
+
+                <a href="{{ url_for('auth.login') }}">
+                    {{ t("nav_login") if t is defined else "Login" }}
+                </a>
+
+                <a href="{{ url_for('auth.register') }}">
+                    {{ t("nav_register") if t is defined else "Register" }}
+                </a>
+
+            {% endif %}
+
+
+            <!-- LANGUAGE SELECTOR -->
+
+            {% if languages is defined %}
+
+            <form class="language-form"
+                  action="{{ url_for('set_language') }}"
+                  method="post">
+
+                <label for="language">
+                    {{ t("language_label") if t is defined else "Language" }}
+                </label>
+
+                <select id="language"
+                        name="language"
+                        onchange="this.form.submit()">
+
+                    {% for code, name in languages.items() %}
+
+                        <option value="{{ code }}"
+                            {% if code == current_language %}
+                                selected
+                            {% endif %}>
+
+                            {{ name }}
+
+                        </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </form>
+
+            {% endif %}
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         FLASH MESSAGES
+    ========================== -->
+
+    <main>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+
+            {% if messages %}
+
+                <div class="flash-container">
+
+                    {% for category, message in messages %}
+
+                        <div class="flash-message {{ category }}">
+                            {{ message }}
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            {% endif %}
+
+        {% endwith %}
+
+
+        <!-- =========================
+             PAGE CONTENT
+        ========================== -->
+
+        {% block content %}
+
+        {% endblock %}
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="footer">
+
+        <p>
+            &copy; 2026 Digital Lost & Found System
+        </p>
+
+        <p>
+            Helping people find their lost belongings.
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>

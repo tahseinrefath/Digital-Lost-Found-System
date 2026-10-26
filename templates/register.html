@@ -1,0 +1,241 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ t("register_title") if t is defined else "Register" }}
+{% endblock %}
+
+{% block content %}
+
+<section class="auth-page">
+
+    <div class="auth-background-glow auth-glow-one"></div>
+    <div class="auth-background-glow auth-glow-two"></div>
+
+    <div class="auth-card register-card">
+
+        <!-- ====================================================
+             REGISTER HEADER
+             ==================================================== -->
+
+        <div class="auth-icon">
+            👤
+        </div>
+
+        <span class="section-label">
+            JOIN US
+        </span>
+
+        <h1>
+            {{ t("register_title") if t is defined else "Create Account" }}
+        </h1>
+
+        <p class="auth-subtitle">
+            {{ t("register_subtitle") if t is defined
+            else "Create your Digital Lost & Found account." }}
+        </p>
+
+
+        <!-- ====================================================
+             REGISTER FORM
+             ==================================================== -->
+
+        <form
+            method="POST"
+            action="{{ url_for('auth.register') }}"
+            onsubmit="return validateRegisterForm()"
+        >
+
+            <!-- NAME -->
+
+            <div class="modern-form-group">
+
+                <label for="name">
+                    {{ t("name_label") if t is defined else "Name" }}
+                </label>
+
+                <div class="input-wrapper">
+
+                    <span class="input-icon">
+                        👤
+                    </span>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your name"
+                        autocomplete="name"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- EMAIL -->
+
+            <div class="modern-form-group">
+
+                <label for="email">
+                    {{ t("email_label") if t is defined else "Email" }}
+                </label>
+
+                <div class="input-wrapper">
+
+                    <span class="input-icon">
+                        ✉️
+                    </span>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- PASSWORD -->
+
+            <div class="modern-form-group">
+
+                <label for="password">
+                    {{ t("password_label") if t is defined else "Password" }}
+                </label>
+
+                <div class="input-wrapper">
+
+                    <span class="input-icon">
+                        🔒
+                    </span>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Create a password"
+                        autocomplete="new-password"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        class="password-show-btn"
+                        onclick="togglePassword('password')"
+                    >
+                        Show
+                    </button>
+
+                </div>
+
+                <p class="password-policy">
+                    {{ t("password_policy") if t is defined
+                    else "Password must contain at least 8 characters." }}
+                </p>
+
+            </div>
+
+
+            <!-- CONFIRM PASSWORD -->
+
+            <div class="modern-form-group">
+
+                <label for="confirm_password">
+                    {{ t("confirm_password_label") if t is defined
+                    else "Confirm Password" }}
+                </label>
+
+                <div class="input-wrapper">
+
+                    <span class="input-icon">
+                        🔐
+                    </span>
+
+                    <input
+                        type="password"
+                        id="confirm_password"
+                        name="confirm_password"
+                        placeholder="Confirm your password"
+                        autocomplete="new-password"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        class="password-show-btn"
+                        onclick="togglePassword('confirm_password')"
+                    >
+                        Show
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- TERMS -->
+
+            <div class="modern-checkbox">
+
+                <input
+                    type="checkbox"
+                    id="terms"
+                    name="terms"
+                    required
+                >
+
+                <label for="terms">
+                    {{ t("terms_agreement") if t is defined
+                    else "I agree to the terms and conditions." }}
+                </label>
+
+            </div>
+
+
+            <!-- REGISTER BUTTON -->
+
+            <button
+                type="submit"
+                class="auth-submit-btn register-submit-btn"
+            >
+                ✨
+                {{ t("register_button") if t is defined
+                else "Create Account" }}
+            </button>
+
+        </form>
+
+
+        <!-- ====================================================
+             LOGIN LINK
+             ==================================================== -->
+
+        <div class="auth-bottom">
+
+            <p>
+                {{ t("register_help") if t is defined
+                else "Already have an account?" }}
+            </p>
+
+            <a
+                href="{{ url_for('auth.login') }}"
+                class="auth-link"
+            >
+                {{ t("go_login") if t is defined
+                else "Login to your account" }}
+                →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

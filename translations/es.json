@@ -1,0 +1,160 @@
+{
+    "page_title": "Sistema Digital de Objetos Perdidos y Encontrados",
+    "app_name": "Objetos Perdidos y Encontrados Digital",
+
+    "nav_home": "Inicio",
+    "nav_login": "Iniciar sesión",
+    "nav_register": "Registrarse",
+    "nav_dashboard": "Panel de control",
+    "nav_report_lost": "Reportar objeto perdido",
+    "nav_report_found": "Reportar objeto encontrado",
+    "nav_matches": "Coincidencias",
+
+    "language_label": "Idioma",
+
+    "hero_title": "Sistema Digital de Objetos Perdidos y Encontrados",
+    "hero_text": "Una forma sencilla e inteligente de reportar objetos perdidos, reportar objetos encontrados y encontrar posibles coincidencias.",
+
+    "report_lost_item": "Reportar objeto perdido",
+    "report_found_item": "Reportar objeto encontrado",
+
+    "feature_report_lost_title": "Reportar objeto perdido",
+    "feature_report_lost_text": "Reporta un objeto que hayas perdido añadiendo su nombre, categoría, ubicación, fecha, descripción e imagen.",
+
+    "feature_report_found_title": "Reportar objeto encontrado",
+    "feature_report_found_text": "Reporta un objeto que hayas encontrado para que su propietario pueda recuperarlo.",
+
+    "feature_smart_match_title": "Coincidencia inteligente",
+    "feature_smart_match_text": "Nuestro sistema compara los reportes de objetos perdidos y encontrados para identificar posibles coincidencias.",
+
+    "latest_lost_items": "Objetos perdidos reportados recientemente",
+    "latest_lost_items_text": "Objetos que han sido reportados como perdidos recientemente.",
+
+    "latest_found_items": "Objetos encontrados reportados recientemente",
+    "latest_found_items_text": "Objetos que han sido reportados como encontrados recientemente.",
+
+    "no_lost_items": "No hay objetos perdidos todavía",
+    "no_lost_items_text": "Todavía no se han reportado objetos perdidos.",
+
+    "no_found_items": "No hay objetos encontrados todavía",
+    "no_found_items_text": "Todavía no se han reportado objetos encontrados.",
+
+    "help_find_items_title": "Ayuda a devolver los objetos perdidos a sus propietarios",
+    "help_find_items_text": "Reporta un objeto perdido o encontrado y ayuda a alguien a recuperar sus pertenencias.",
+
+    "login_title": "Iniciar sesión",
+    "login_subtitle": "Inicia sesión en tu cuenta del sistema digital de objetos perdidos y encontrados.",
+
+    "register_title": "Crear una cuenta",
+    "register_subtitle": "Crea tu cuenta en el sistema digital de objetos perdidos y encontrados.",
+
+    "name_label": "Nombre",
+    "email_label": "Correo electrónico",
+    "password_label": "Contraseña",
+    "confirm_password_label": "Confirmar contraseña",
+
+    "password_policy": "La contraseña debe contener al menos 8 caracteres.",
+
+    "login_button": "Iniciar sesión",
+    "register_button": "Crear cuenta",
+    "logout_button": "Cerrar sesión",
+
+    "remember_me": "Recordarme",
+
+    "login_help": "¿Todavía no tienes una cuenta?",
+    "register_help": "¿Ya tienes una cuenta?",
+
+    "go_register": "Crear una cuenta",
+    "go_login": "Iniciar sesión",
+
+    "terms_agreement": "Acepto los términos y condiciones.",
+
+    "dashboard_title": "Panel de control",
+    "dashboard_subtitle": "Administra tus reportes de objetos perdidos y encontrados.",
+
+    "my_lost_items": "Mis objetos perdidos",
+    "my_lost_items_text": "Consulta y administra los objetos que has reportado como perdidos.",
+
+    "my_found_items": "Mis objetos encontrados",
+    "my_found_items_text": "Consulta y administra los objetos que has reportado como encontrados.",
+
+    "smart_matching_title": "Coincidencia inteligente",
+    "smart_matching_text": "Encuentra posibles coincidencias entre objetos perdidos y encontrados.",
+
+    "view_matches": "Ver coincidencias",
+    "back_to_dashboard": "Volver al panel de control",
+
+    "item_name_label": "Nombre del objeto",
+    "category_label": "Categoría",
+    "location_label": "Ubicación",
+    "date_lost_label": "Fecha de pérdida",
+    "date_found_label": "Fecha de hallazgo",
+    "description_label": "Descripción",
+    "image_label": "Imagen",
+    "status_label": "Estado",
+    "reported_on": "Reportado el",
+
+    "image_help": "Puedes subir una imagen PNG, JPG, JPEG, GIF o WEBP con un tamaño máximo de 5 MB.",
+
+    "report_lost_title": "Reportar objeto perdido",
+    "report_lost_subtitle": "Introduce los detalles del objeto que has perdido.",
+
+    "report_found_title": "Reportar objeto encontrado",
+    "report_found_subtitle": "Introduce los detalles del objeto que has encontrado.",
+
+    "submit_lost_report": "Enviar reporte de objeto perdido",
+    "submit_found_report": "Enviar reporte de objeto encontrado",
+    "cancel_button": "Cancelar",
+
+    "matches_title": "Posibles coincidencias",
+    "matches_subtitle": "Estos son objetos encontrados que podrían coincidir con tus objetos perdidos.",
+
+    "match_label": "Coincidencia",
+    "similarity_label": "Similitud",
+
+    "lost_item_label": "Objeto perdido",
+    "found_item_label": "Objeto encontrado",
+
+    "high_match": "Coincidencia alta",
+    "medium_match": "Coincidencia media",
+    "low_match": "Coincidencia baja",
+
+    "no_matches": "No se encontraron coincidencias",
+    "no_matches_text": "Actualmente no se han encontrado posibles coincidencias.",
+
+    "matches_help": "Se comparan el nombre, la categoría, la ubicación, la descripción y la fecha para determinar el porcentaje de coincidencia.",
+
+    "status_lost": "Perdido",
+    "status_found": "Encontrado",
+    "status_matched": "Coincidente",
+    "status_claimed": "Reclamado",
+
+    "success_registered": "Registro exitoso. Ahora puedes iniciar sesión.",
+    "success_login": "Inicio de sesión exitoso.",
+    "success_logout": "Has cerrado sesión correctamente.",
+    "success_lost_report": "El objeto perdido se ha reportado correctamente.",
+    "success_found_report": "El objeto encontrado se ha reportado correctamente.",
+
+    "error_invalid_login": "El correo electrónico o la contraseña son incorrectos.",
+    "error_email_exists": "Ya existe una cuenta con este correo electrónico.",
+    "error_password_mismatch": "Las contraseñas no coinciden.",
+    "error_invalid_password": "La contraseña no es válida.",
+    "error_required_fields": "Completa todos los campos obligatorios.",
+    "error_invalid_image": "El archivo de imagen no es válido.",
+    "error_file_too_large": "El archivo es demasiado grande. El tamaño máximo es de 5 MB.",
+
+    "footer_text": "Un sistema digital que ayuda a las personas a encontrar sus pertenencias perdidas.",
+
+    "select_category": "Seleccionar categoría",
+
+    "mobile_phone": "Teléfono móvil",
+    "wallet": "Cartera",
+    "bag": "Bolso",
+    "id_card": "Documento de identidad",
+    "keys": "Llaves",
+    "documents": "Documentos",
+    "electronics": "Electrónica",
+    "jewellery": "Joyas",
+    "clothing": "Ropa",
+    "other": "Otro"
+}

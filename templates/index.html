@@ -1,0 +1,603 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ t("page_title") if t is defined else "Digital Lost & Found" }}
+{% endblock %}
+
+{% block content %}
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+
+<section class="home-hero">
+
+    <div class="hero-glow glow-one"></div>
+    <div class="hero-glow glow-two"></div>
+
+    <div class="hero-content">
+
+        <div class="hero-badge">
+            🔎 Digital Lost & Found
+        </div>
+
+        <h1>
+            {{ t("hero_title") if t is defined else "Digital Lost & Found System" }}
+        </h1>
+
+        <p>
+            {{ t("hero_text") if t is defined
+            else "A simple and smart way to report lost items, report found items, and find possible matches." }}
+        </p>
+
+        <div class="hero-buttons">
+
+            <a
+                href="{{ url_for('lost.report_lost') }}"
+                class="modern-btn primary-btn"
+            >
+                🔍
+                {{ t("report_lost_item") if t is defined else "Report Lost Item" }}
+            </a>
+
+            <a
+                href="{{ url_for('found.report_found') }}"
+                class="modern-btn green-btn"
+            >
+                📦
+                {{ t("report_found_item") if t is defined else "Report Found Item" }}
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     FEATURES
+     ============================================================ -->
+
+<section class="home-features">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            HOW IT WORKS
+        </span>
+
+        <h2>
+            {{ t("hero_title") if t is defined
+            else "Find What Matters" }}
+        </h2>
+
+        <p>
+            {{ t("hero_text") if t is defined
+            else "Report, discover and reconnect lost belongings." }}
+        </p>
+
+    </div>
+
+
+    <div class="feature-modern-grid">
+
+        <div class="modern-feature-card">
+
+            <div class="feature-icon blue-icon">
+                🔍
+            </div>
+
+            <h3>
+                {{ t("feature_report_lost_title") if t is defined
+                else "Report Lost Item" }}
+            </h3>
+
+            <p>
+                {{ t("feature_report_lost_text") if t is defined
+                else "Report an item you have lost with its details and image." }}
+            </p>
+
+        </div>
+
+
+        <div class="modern-feature-card">
+
+            <div class="feature-icon green-icon">
+                📦
+            </div>
+
+            <h3>
+                {{ t("feature_report_found_title") if t is defined
+                else "Report Found Item" }}
+            </h3>
+
+            <p>
+                {{ t("feature_report_found_text") if t is defined
+                else "Report an item you found so the owner can recover it." }}
+            </p>
+
+        </div>
+
+
+        <div class="modern-feature-card">
+
+            <div class="feature-icon purple-icon">
+                ✨
+            </div>
+
+            <h3>
+                {{ t("feature_smart_match_title") if t is defined
+                else "Smart Matching" }}
+            </h3>
+
+            <p>
+                {{ t("feature_smart_match_text") if t is defined
+                else "Our matching system compares reports to identify possible matches." }}
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     LOST ITEMS
+     ============================================================ -->
+
+<section class="items-section lost-section">
+
+    <div class="items-box">
+
+        <div class="items-header">
+
+            <div class="items-header-icon lost-icon">
+                🔎
+            </div>
+
+            <div>
+
+                <span class="section-label">
+                    LOST ITEMS
+                </span>
+
+                <h2>
+                    {{ t("latest_lost_items") if t is defined
+                    else "Recently Reported Lost Items" }}
+                </h2>
+
+                <p>
+                    {{ t("latest_lost_items_text") if t is defined
+                    else "Recently reported items that have been lost." }}
+                </p>
+
+            </div>
+
+        </div>
+
+
+        {% if lost_items %}
+
+            <div class="modern-item-grid">
+
+                {% for item in lost_items %}
+
+                    {% include "item_card.html" %}
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <div class="modern-empty-state">
+
+                <div class="empty-icon">
+                    🔎
+                </div>
+
+                <h3>
+                    {{ t("no_lost_items") if t is defined
+                    else "No Lost Items Yet" }}
+                </h3>
+
+                <p>
+                    {{ t("no_lost_items_text") if t is defined
+                    else "No lost items have been reported yet." }}
+                </p>
+
+                <a
+                    href="{{ url_for('lost.report_lost') }}"
+                    class="small-modern-btn"
+                >
+                    Report a Lost Item
+                </a>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     FOUND ITEMS
+     ============================================================ -->
+
+<section class="items-section found-section">
+
+    <div class="items-box">
+
+        <div class="items-header">
+
+            <div class="items-header-icon found-icon">
+                📦
+            </div>
+
+            <div>
+
+                <span class="section-label">
+                    FOUND ITEMS
+                </span>
+
+                <h2>
+                    {{ t("latest_found_items") if t is defined
+                    else "Recently Reported Found Items" }}
+                </h2>
+
+                <p>
+                    {{ t("latest_found_items_text") if t is defined
+                    else "Recently reported items that have been found." }}
+                </p>
+
+            </div>
+
+        </div>
+
+
+        {% if found_items %}
+
+            <div class="modern-item-grid">
+
+                {% for item in found_items %}
+
+                    {% include "item_card.html" %}
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <div class="modern-empty-state">
+
+                <div class="empty-icon">
+                    📦
+                </div>
+
+                <h3>
+                    {{ t("no_found_items") if t is defined
+                    else "No Found Items Yet" }}
+                </h3>
+
+                <p>
+                    {{ t("no_found_items_text") if t is defined
+                    else "No found items have been reported yet." }}
+                </p>
+
+                <a
+                    href="{{ url_for('found.report_found') }}"
+                    class="small-modern-btn green-small-btn"
+                >
+                    Report a Found Item
+                </a>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     CALL TO ACTION
+     ============================================================ -->
+
+<section class="modern-cta">
+
+    <div class="cta-content">
+
+        <span class="section-label">
+            GET STARTED
+        </span>
+
+        <h2>
+            {{ t("help_find_items_title") if t is defined
+            else "Help Reconnect Lost Items With Their Owners" }}
+        </h2>
+
+        <p>
+            {{ t("help_find_items_text") if t is defined
+            else "Report a lost or found item and help someone recover their belongings." }}
+        </p>
+
+        <div>
+
+            <a
+                href="{{ url_for('lost.report_lost') }}"
+                class="modern-btn primary-btn"
+            >
+                🔍 Report Lost Item
+            </a>
+
+            <a
+                href="{{ url_for('found.report_found') }}"
+                class="modern-btn green-btn"
+            >
+                📦 Report Found Item
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =========================================================
+     SMART MATCH ANALYSIS
+========================================================= -->
+
+<section class="home-match-section">
+
+    <div class="home-match-header">
+
+        <div class="home-match-heading">
+
+            <div class="home-match-icon">
+                ✨
+            </div>
+
+            <div>
+                <span class="home-match-label">
+                    SMART MATCHING
+                </span>
+
+                <h2>
+                    Possible Matches
+                </h2>
+
+                <p>
+                    Our system compares reported lost and found items
+                    to find possible matches automatically.
+                </p>
+            </div>
+
+        </div>
+
+        <a
+            href="{{ url_for('match.matches') }}"
+            class="home-match-view-all"
+        >
+            View All Matches
+            <span>→</span>
+        </a>
+
+    </div>
+
+
+    {% if smart_matches %}
+
+    <div class="home-match-grid">
+
+        {% for match in smart_matches %}
+
+        {% set lost = match.get("lost_item", match.get("lost", {})) %}
+        {% set found = match.get("found_item", match.get("found", {})) %}
+        {% set score = match.get("similarity", match.get("score", match.get("match_score", 0))) %}
+
+        <article class="home-match-card">
+
+            <!-- MATCH SCORE -->
+
+            <div class="home-match-score">
+
+                <div class="home-score-circle">
+
+                    <strong>{{ score|round|int }}%</strong>
+
+                    <span>MATCH</span>
+
+                </div>
+
+                {% if score >= 75 %}
+
+                    <span class="home-match-level high">
+                        HIGH MATCH
+                    </span>
+
+                {% elif score >= 50 %}
+
+                    <span class="home-match-level medium">
+                        MEDIUM MATCH
+                    </span>
+
+                {% else %}
+
+                    <span class="home-match-level low">
+                        POSSIBLE MATCH
+                    </span>
+
+                {% endif %}
+
+            </div>
+
+
+            <!-- TWO ITEMS -->
+
+            <div class="home-match-items">
+
+                <!-- LOST ITEM -->
+
+                <div class="home-match-item lost">
+
+                    <div class="home-match-item-label">
+                        🔎 LOST ITEM
+                    </div>
+
+                    {% if lost.get("image") %}
+
+                    <img
+                        src="{{ url_for('static', filename='uploads/item_images/' ~ lost.get('image')) }}"
+                        alt="{{ lost.get('item_name', 'Lost item') }}"
+                        class="home-match-image"
+                    >
+
+                    {% else %}
+
+                    <div class="home-match-image-placeholder">
+                        🔎
+                    </div>
+
+                    {% endif %}
+
+                    <h3>
+                        {{ lost.get("item_name", "Unknown item") }}
+                    </h3>
+
+                    <p>
+                        📍 {{ lost.get("location", "Unknown location") }}
+                    </p>
+
+                    {% if lost.get("category") %}
+                    <span class="home-match-category">
+                        {{ lost.get("category") }}
+                    </span>
+                    {% endif %}
+
+                </div>
+
+
+                <!-- VS -->
+
+                <div class="home-match-vs">
+                    <span>VS</span>
+                </div>
+
+
+                <!-- FOUND ITEM -->
+
+                <div class="home-match-item found">
+
+                    <div class="home-match-item-label">
+                        📦 FOUND ITEM
+                    </div>
+
+                    {% if found.get("image") %}
+
+                    <img
+                        src="{{ url_for('static', filename='uploads/item_images/' ~ found.get('image')) }}"
+                        alt="{{ found.get('item_name', 'Found item') }}"
+                        class="home-match-image"
+                    >
+
+                    {% else %}
+
+                    <div class="home-match-image-placeholder found-placeholder">
+                        📦
+                    </div>
+
+                    {% endif %}
+
+                    <h3>
+                        {{ found.get("item_name", "Unknown item") }}
+                    </h3>
+
+                    <p>
+                        📍 {{ found.get("location", "Unknown location") }}
+                    </p>
+
+                    {% if found.get("category") %}
+                    <span class="home-match-category">
+                        {{ found.get("category") }}
+                    </span>
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+
+            <!-- MATCH MESSAGE -->
+
+            <div class="home-match-message">
+
+                {% if score >= 75 %}
+
+                    ✨ This looks like a strong match.
+
+                {% elif score >= 50 %}
+
+                    🔍 These items have several similarities.
+
+                {% else %}
+
+                    💡 These items may be related.
+
+                {% endif %}
+
+            </div>
+
+        </article>
+
+        {% endfor %}
+
+    </div>
+
+    {% else %}
+
+    <!-- NO MATCHES -->
+
+    <div class="home-no-matches">
+
+        <div class="home-no-match-icon">
+            🔍
+        </div>
+
+        <h3>
+            No Possible Matches Yet
+        </h3>
+
+        <p>
+            Report a lost or found item with more details.
+            Our smart matching system will analyze them automatically.
+        </p>
+
+        <div class="home-no-match-buttons">
+
+            <a
+                href="{{ url_for('lost.report_lost') }}"
+                class="home-match-button lost-button"
+            >
+                🔎 Report Lost Item
+            </a>
+
+            <a
+                href="{{ url_for('found.report_found') }}"
+                class="home-match-button found-button"
+            >
+                📦 Report Found Item
+            </a>
+
+        </div>
+
+    </div>
+
+    {% endif %}
+
+</section>
+{% endblock %}

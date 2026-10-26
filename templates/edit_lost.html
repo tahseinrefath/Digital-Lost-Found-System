@@ -1,0 +1,230 @@
+{% extends "base.html" %}
+
+{% block title %}
+Edit Lost Item
+{% endblock %}
+
+{% block content %}
+
+<div class="report-page">
+
+    <div class="report-container">
+
+        <section class="report-header">
+
+            <div class="report-icon lost-report-icon">
+                ✏️
+            </div>
+
+            <div>
+                <span class="report-label">
+                    EDIT LOST ITEM
+                </span>
+
+                <h1>
+                    Edit Lost Item
+                </h1>
+
+                <p>
+                    Update your lost item information.
+                </p>
+            </div>
+
+        </section>
+
+
+        <section class="report-form-card">
+
+            <form
+                action="{{ url_for('lost.edit_lost', item_id=item['id']) }}"
+                method="post"
+                enctype="multipart/form-data"
+            >
+
+                <div class="report-form-group">
+
+                    <label>
+                        Item Name
+                    </label>
+
+                    <input
+                        type="text"
+                        name="item_name"
+                        value="{{ item['item_name'] }}"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="report-form-group">
+
+                    <label>
+                        Category
+                    </label>
+
+                    <select name="category">
+
+                        <option value="">
+                            Select Category
+                        </option>
+
+                        <option value="mobile_phone"
+                            {% if item['category'] == 'mobile_phone' %}selected{% endif %}>
+                            Mobile Phone
+                        </option>
+
+                        <option value="wallet"
+                            {% if item['category'] == 'wallet' %}selected{% endif %}>
+                            Wallet
+                        </option>
+
+                        <option value="bag"
+                            {% if item['category'] == 'bag' %}selected{% endif %}>
+                            Bag
+                        </option>
+
+                        <option value="id_card"
+                            {% if item['category'] == 'id_card' %}selected{% endif %}>
+                            ID Card
+                        </option>
+
+                        <option value="keys"
+                            {% if item['category'] == 'keys' %}selected{% endif %}>
+                            Keys
+                        </option>
+
+                        <option value="electronics"
+                            {% if item['category'] == 'electronics' %}selected{% endif %}>
+                            Electronics
+                        </option>
+
+                        <option value="other"
+                            {% if item['category'] == 'other' %}selected{% endif %}>
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="report-form-group">
+
+                    <label>
+                        Location
+                    </label>
+
+                    <input
+                        type="text"
+                        name="location"
+                        value="{{ item['location'] }}"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="report-form-group">
+
+                    <label>
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        name="phone"
+                        value="{{ item['phone'] }}"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="report-form-group">
+
+                    <label>
+                        Date Lost
+                    </label>
+
+                    <input
+                        type="date"
+                        name="lost_date"
+                        value="{{ item['lost_date'] }}"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="report-form-group">
+
+                    <label>
+                        Description
+                    </label>
+
+                    <textarea
+                        name="description"
+                        rows="5"
+                    >{{ item['description'] or '' }}</textarea>
+
+                </div>
+
+
+                <div class="report-form-group">
+
+                    <label>
+                        Replace Item Photo
+                    </label>
+
+                    <input
+                        type="file"
+                        name="image"
+                        accept=".jpg,.jpeg,.png,.webp"
+                    >
+
+                </div>
+
+
+                <div class="report-form-group">
+
+                    <label>
+                        Replace Person Photo
+                    </label>
+
+                    <input
+                        type="file"
+                        name="person_image"
+                        accept=".jpg,.jpeg,.png,.webp"
+                    >
+
+                </div>
+
+
+                <div class="report-form-actions">
+
+                    <a
+                        href="{{ url_for('dashboard') }}"
+                        class="report-cancel-button"
+                    >
+                        Cancel
+                    </a>
+
+                    <button
+                        type="submit"
+                        class="report-submit-button"
+                    >
+                        ✏️ Update Lost Item
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </div>
+
+</div>
+
+{% endblock %}

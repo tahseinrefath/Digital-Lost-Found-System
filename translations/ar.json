@@ -1,0 +1,160 @@
+{
+    "page_title": "نظام المفقودات والموجودات الرقمي",
+    "app_name": "المفقودات والموجودات الرقمي",
+
+    "nav_home": "الرئيسية",
+    "nav_login": "تسجيل الدخول",
+    "nav_register": "إنشاء حساب",
+    "nav_dashboard": "لوحة التحكم",
+    "nav_report_lost": "الإبلاغ عن مفقود",
+    "nav_report_found": "الإبلاغ عن موجود",
+    "nav_matches": "التطابقات",
+
+    "language_label": "اللغة",
+
+    "hero_title": "نظام المفقودات والموجودات الرقمي",
+    "hero_text": "طريقة بسيطة وذكية للإبلاغ عن الأشياء المفقودة، والإبلاغ عن الأشياء التي تم العثور عليها، والعثور على التطابقات المحتملة.",
+
+    "report_lost_item": "الإبلاغ عن شيء مفقود",
+    "report_found_item": "الإبلاغ عن شيء تم العثور عليه",
+
+    "feature_report_lost_title": "الإبلاغ عن شيء مفقود",
+    "feature_report_lost_text": "أبلغ عن شيء فقدته من خلال إضافة اسمه وتصنيفه وموقعه وتاريخه ووصفه وصورته.",
+
+    "feature_report_found_title": "الإبلاغ عن شيء تم العثور عليه",
+    "feature_report_found_text": "أبلغ عن شيء وجدته حتى يتمكن صاحبه من استعادته.",
+
+    "feature_smart_match_title": "المطابقة الذكية",
+    "feature_smart_match_text": "يقارن نظام المطابقة بين بلاغات المفقودات والموجودات لتحديد التطابقات المحتملة.",
+
+    "latest_lost_items": "أحدث الأشياء المفقودة",
+    "latest_lost_items_text": "الأشياء التي تم الإبلاغ عن فقدانها مؤخراً.",
+
+    "latest_found_items": "أحدث الأشياء التي تم العثور عليها",
+    "latest_found_items_text": "الأشياء التي تم الإبلاغ عن العثور عليها مؤخراً.",
+
+    "no_lost_items": "لا توجد أشياء مفقودة حتى الآن",
+    "no_lost_items_text": "لم يتم الإبلاغ عن أي أشياء مفقودة حتى الآن.",
+
+    "no_found_items": "لا توجد أشياء تم العثور عليها حتى الآن",
+    "no_found_items_text": "لم يتم الإبلاغ عن أي أشياء تم العثور عليها حتى الآن.",
+
+    "help_find_items_title": "ساعد في إعادة المفقودات إلى أصحابها",
+    "help_find_items_text": "أبلغ عن شيء مفقود أو تم العثور عليه وساعد شخصاً على استعادة ممتلكاته.",
+
+    "login_title": "تسجيل الدخول",
+    "login_subtitle": "سجّل الدخول إلى حسابك في نظام المفقودات والموجودات الرقمي.",
+
+    "register_title": "إنشاء حساب",
+    "register_subtitle": "أنشئ حسابك في نظام المفقودات والموجودات الرقمي.",
+
+    "name_label": "الاسم",
+    "email_label": "البريد الإلكتروني",
+    "password_label": "كلمة المرور",
+    "confirm_password_label": "تأكيد كلمة المرور",
+
+    "password_policy": "يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل.",
+
+    "login_button": "تسجيل الدخول",
+    "register_button": "إنشاء حساب",
+    "logout_button": "تسجيل الخروج",
+
+    "remember_me": "تذكرني",
+
+    "login_help": "ليس لديك حساب بعد؟",
+    "register_help": "لديك حساب بالفعل؟",
+
+    "go_register": "إنشاء حساب",
+    "go_login": "تسجيل الدخول",
+
+    "terms_agreement": "أوافق على الشروط والأحكام.",
+
+    "dashboard_title": "لوحة التحكم",
+    "dashboard_subtitle": "إدارة بلاغات المفقودات والموجودات الخاصة بك.",
+
+    "my_lost_items": "الأشياء المفقودة الخاصة بي",
+    "my_lost_items_text": "عرض وإدارة الأشياء التي أبلغت عن فقدانها.",
+
+    "my_found_items": "الأشياء التي عثرت عليها",
+    "my_found_items_text": "عرض وإدارة الأشياء التي أبلغت عن العثور عليها.",
+
+    "smart_matching_title": "المطابقة الذكية",
+    "smart_matching_text": "ابحث عن التطابقات المحتملة بين الأشياء المفقودة والموجودة.",
+
+    "view_matches": "عرض التطابقات",
+    "back_to_dashboard": "العودة إلى لوحة التحكم",
+
+    "item_name_label": "اسم الشيء",
+    "category_label": "الفئة",
+    "location_label": "الموقع",
+    "date_lost_label": "تاريخ الفقدان",
+    "date_found_label": "تاريخ العثور",
+    "description_label": "الوصف",
+    "image_label": "الصورة",
+    "status_label": "الحالة",
+    "reported_on": "تم الإبلاغ في",
+
+    "image_help": "يمكنك رفع صورة بصيغة PNG أو JPG أو JPEG أو GIF أو WEBP، وبحجم أقصى 5 ميجابايت.",
+
+    "report_lost_title": "الإبلاغ عن شيء مفقود",
+    "report_lost_subtitle": "أدخل تفاصيل الشيء الذي فقدته.",
+
+    "report_found_title": "الإبلاغ عن شيء تم العثور عليه",
+    "report_found_subtitle": "أدخل تفاصيل الشيء الذي عثرت عليه.",
+
+    "submit_lost_report": "إرسال بلاغ المفقود",
+    "submit_found_report": "إرسال بلاغ الموجود",
+    "cancel_button": "إلغاء",
+
+    "matches_title": "التطابقات المحتملة",
+    "matches_subtitle": "هذه هي الأشياء الموجودة التي قد تتطابق مع الأشياء التي فقدتها.",
+
+    "match_label": "التطابق",
+    "similarity_label": "نسبة التشابه",
+
+    "lost_item_label": "الشيء المفقود",
+    "found_item_label": "الشيء الموجود",
+
+    "high_match": "تطابق مرتفع",
+    "medium_match": "تطابق متوسط",
+    "low_match": "تطابق منخفض",
+
+    "no_matches": "لم يتم العثور على تطابقات",
+    "no_matches_text": "لم يتم العثور على أي تطابقات محتملة في الوقت الحالي.",
+
+    "matches_help": "تتم مقارنة اسم الشيء والفئة والموقع والوصف والتاريخ لتحديد نسبة التطابق.",
+
+    "status_lost": "مفقود",
+    "status_found": "موجود",
+    "status_matched": "متطابق",
+    "status_claimed": "تمت المطالبة به",
+
+    "success_registered": "تم إنشاء الحساب بنجاح. يمكنك الآن تسجيل الدخول.",
+    "success_login": "تم تسجيل الدخول بنجاح.",
+    "success_logout": "تم تسجيل خروجك بنجاح.",
+    "success_lost_report": "تم الإبلاغ عن الشيء المفقود بنجاح.",
+    "success_found_report": "تم الإبلاغ عن الشيء الذي تم العثور عليه بنجاح.",
+
+    "error_invalid_login": "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
+    "error_email_exists": "يوجد حساب بالفعل باستخدام هذا البريد الإلكتروني.",
+    "error_password_mismatch": "كلمتا المرور غير متطابقتين.",
+    "error_invalid_password": "كلمة المرور غير صالحة.",
+    "error_required_fields": "يرجى ملء جميع الحقول المطلوبة.",
+    "error_invalid_image": "ملف الصورة غير صالح.",
+    "error_file_too_large": "حجم الملف كبير جداً. الحد الأقصى هو 5 ميجابايت.",
+
+    "footer_text": "نظام رقمي لمساعدة الأشخاص في العثور على ممتلكاتهم المفقودة.",
+
+    "select_category": "اختر الفئة",
+
+    "mobile_phone": "هاتف محمول",
+    "wallet": "محفظة",
+    "bag": "حقيبة",
+    "id_card": "بطاقة هوية",
+    "keys": "مفاتيح",
+    "documents": "مستندات",
+    "electronics": "إلكترونيات",
+    "jewellery": "مجوهرات",
+    "clothing": "ملابس",
+    "other": "أخرى"
+}

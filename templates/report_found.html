@@ -1,0 +1,606 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ t("report_found_title") }} - {{ t("app_name") }}
+{% endblock %}
+
+{% block content %}
+
+<div class="modern-page-container">
+
+    <!-- Page Header -->
+    <div class="modern-page-header">
+        <div class="page-header-icon">🔎</div>
+
+        <div>
+            <h1>{{ t("report_found_title") }}</h1>
+            <p>{{ t("report_found_subtitle") }}</p>
+        </div>
+    </div>
+
+
+    <!-- Report Found Form -->
+    <div class="modern-form-card">
+
+        <form
+            method="POST"
+            action="{{ url_for('found.report_found') }}"
+            enctype="multipart/form-data"
+            onsubmit="return validateItemForm();"
+        >
+
+            <!-- Person Name -->
+            <div class="modern-form-group">
+
+                <label for="reporter_name">
+                    Person Name
+                    <span class="required">*</span>
+                </label>
+
+                <div class="input-wrapper">
+                    <span class="input-icon">👤</span>
+
+                    <input
+                        type="text"
+                        id="reporter_name"
+                        name="reporter_name"
+                        value="{{ reporter_name }}"
+                        readonly
+                        placeholder="Person Name"
+                    >
+                </div>
+
+                <small class="field-help">
+                    This name is automatically taken from your account.
+                </small>
+
+            </div>
+
+
+            <!-- Item Name -->
+            <div class="modern-form-group">
+
+                <label for="item_name">
+                    {{ t("item_name_label") }}
+                    <span class="required">*</span>
+                </label>
+
+                <div class="input-wrapper">
+                    <span class="input-icon">📦</span>
+
+                    <input
+                        type="text"
+                        id="item_name"
+                        name="item_name"
+                        required
+                        placeholder="{{ t('item_name_label') }}"
+                    >
+                </div>
+
+            </div>
+
+
+            <!-- Category -->
+            <div class="modern-form-group">
+
+                <label for="category">
+                    {{ t("category_label") }}
+                </label>
+
+                <div class="input-wrapper">
+                    <span class="input-icon">🏷️</span>
+
+                    <select
+                        id="category"
+                        name="category"
+                    >
+                        <option value="">
+                            {{ t("select_category") }}
+                        </option>
+
+                        <option value="Mobile Phone">
+                            {{ t("mobile_phone") }}
+                        </option>
+
+                        <option value="Wallet">
+                            {{ t("wallet") }}
+                        </option>
+
+                        <option value="Bag">
+                            {{ t("bag") }}
+                        </option>
+
+                        <option value="ID Card">
+                            {{ t("id_card") }}
+                        </option>
+
+                        <option value="Keys">
+                            {{ t("keys") }}
+                        </option>
+
+                        <option value="Documents">
+                            {{ t("documents") }}
+                        </option>
+
+                        <option value="Electronics">
+                            {{ t("electronics") }}
+                        </option>
+
+                        <option value="Jewellery">
+                            {{ t("jewellery") }}
+                        </option>
+
+                        <option value="Clothing">
+                            {{ t("clothing") }}
+                        </option>
+
+                        <option value="Other">
+                            {{ t("other") }}
+                        </option>
+
+                    </select>
+                </div>
+
+            </div>
+
+
+            <!-- Location -->
+            <div class="modern-form-group">
+
+                <label for="location">
+                    {{ t("location_label") }}
+                    <span class="required">*</span>
+                </label>
+
+                <div class="input-wrapper">
+                    <span class="input-icon">📍</span>
+
+                    <input
+                        type="text"
+                        id="location"
+                        name="location"
+                        required
+                        placeholder="{{ t('location_label') }}"
+                    >
+                </div>
+
+            </div>
+
+
+            <!-- Phone -->
+            <div class="modern-form-group">
+
+                <label for="phone">
+                    Phone Number
+                    <span class="required">*</span>
+                </label>
+
+                <div class="input-wrapper">
+                    <span class="input-icon">📞</span>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        required
+                        maxlength="10"
+                        pattern="[0-9]{10}"
+                        inputmode="numeric"
+                        placeholder="Enter 10-digit phone number"
+                    >
+                </div>
+
+                <small class="field-help">
+                    Enter a valid 10-digit phone number.
+                </small>
+
+            </div>
+
+
+            <!-- Found Date -->
+            <div class="modern-form-group">
+
+                <label for="found_date">
+                    {{ t("date_found_label") }}
+                    <span class="required">*</span>
+                </label>
+
+                <div class="input-wrapper">
+                    <span class="input-icon">📅</span>
+
+                    <input
+                        type="date"
+                        id="found_date"
+                        name="found_date"
+                        required
+                    >
+                </div>
+
+            </div>
+
+
+            <!-- Description -->
+            <div class="modern-form-group">
+
+                <label for="description">
+                    {{ t("description_label") }}
+                </label>
+
+                <div class="input-wrapper textarea-wrapper">
+                    <span class="input-icon textarea-icon">📝</span>
+
+                    <textarea
+                        id="description"
+                        name="description"
+                        rows="5"
+                        placeholder="{{ t('description_label') }}"
+                    ></textarea>
+                </div>
+
+            </div>
+
+
+            <!-- Image Upload -->
+            <div class="modern-form-group">
+
+                <label for="image">
+                    {{ t("image_label") }}
+                </label>
+
+                <div class="upload-area">
+
+                    <input
+                        type="file"
+                        id="image"
+                        name="image"
+                        accept=".jpg,.jpeg,.png,.gif,.webp,image/*"
+                        onchange="previewImage(event)"
+                    >
+
+                    <div class="upload-content">
+                        <div class="upload-icon">📷</div>
+
+                        <div class="upload-title">
+                            Choose an image
+                        </div>
+
+                        <div class="upload-subtitle">
+                            JPG, JPEG, PNG, GIF or WEBP
+                        </div>
+
+                        <div class="upload-help">
+                            Maximum file size: 5 MB
+                        </div>
+                    </div>
+
+                </div>
+
+                <small class="field-help">
+                    {{ t("image_help") }}
+                </small>
+
+            </div>
+
+
+            <!-- Image Preview -->
+            <div
+                id="image-preview-container"
+                class="image-preview-container"
+                style="display: none;"
+            >
+
+                <div class="preview-title">
+                    Image Preview
+                </div>
+
+                <img
+                    id="image-preview"
+                    src=""
+                    alt="Image Preview"
+                >
+
+            </div>
+
+
+            <!-- Form Buttons -->
+            <div class="modern-form-actions">
+
+                <a
+                    href="{{ url_for('dashboard') }}"
+                    class="modern-btn secondary-btn"
+                >
+                    ← {{ t("cancel_button") }}
+                </a>
+
+                <button
+                    type="submit"
+                    class="modern-btn primary-btn"
+                >
+                    🔎 {{ t("submit_found_report") }}
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<style>
+
+.modern-page-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px 60px;
+}
+
+.modern-page-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+.page-header-icon {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    border-radius: 16px;
+    background: #f3f4f6;
+}
+
+.modern-page-header h1 {
+    margin: 0 0 6px;
+    font-size: 32px;
+}
+
+.modern-page-header p {
+    margin: 0;
+    color: #6b7280;
+}
+
+.modern-form-card {
+    width: 100%;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+}
+
+.modern-form-group {
+    margin-bottom: 24px;
+}
+
+.modern-form-group label {
+    display: block;
+    margin-bottom: 9px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.required {
+    color: #dc2626;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    z-index: 1;
+}
+
+.input-wrapper input,
+.input-wrapper select,
+.input-wrapper textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    background: #ffffff;
+    color: #111827;
+    font-size: 15px;
+    padding: 13px 15px 13px 48px;
+    outline: none;
+    transition: 0.2s ease;
+}
+
+.input-wrapper input:focus,
+.input-wrapper select:focus,
+.input-wrapper textarea:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+.input-wrapper input[readonly] {
+    background: #f3f4f6;
+    color: #4b5563;
+    cursor: not-allowed;
+}
+
+.input-wrapper textarea {
+    min-height: 130px;
+    resize: vertical;
+    padding-top: 14px;
+}
+
+.textarea-wrapper {
+    align-items: flex-start;
+}
+
+.textarea-icon {
+    top: 20px;
+    transform: none;
+}
+
+.field-help {
+    display: block;
+    margin-top: 7px;
+    color: #6b7280;
+    font-size: 13px;
+}
+
+.upload-area {
+    position: relative;
+    border: 2px dashed #d1d5db;
+    border-radius: 14px;
+    padding: 35px 20px;
+    text-align: center;
+    background: #f9fafb;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.upload-area:hover {
+    border-color: #6366f1;
+    background: #f5f5ff;
+}
+
+.upload-area input[type="file"] {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.upload-content {
+    pointer-events: none;
+}
+
+.upload-icon {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.upload-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.upload-subtitle {
+    margin-top: 5px;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.upload-help {
+    margin-top: 8px;
+    color: #9ca3af;
+    font-size: 12px;
+}
+
+.image-preview-container {
+    margin: 20px 0 25px;
+    padding: 18px;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    background: #f9fafb;
+    text-align: center;
+}
+
+.preview-title {
+    margin-bottom: 12px;
+    font-weight: 600;
+    color: #374151;
+}
+
+#image-preview {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 12px;
+    object-fit: contain;
+}
+
+.modern-form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.modern-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 46px;
+    padding: 0 22px;
+    border-radius: 12px;
+    border: none;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.primary-btn {
+    background: #4f46e5;
+    color: white;
+}
+
+.primary-btn:hover {
+    background: #4338ca;
+    transform: translateY(-1px);
+}
+
+.secondary-btn {
+    background: #f3f4f6;
+    color: #374151;
+}
+
+.secondary-btn:hover {
+    background: #e5e7eb;
+}
+
+@media (max-width: 768px) {
+
+    .modern-page-container {
+        margin: 25px auto;
+        padding: 0 15px 40px;
+    }
+
+    .modern-page-header {
+        align-items: flex-start;
+    }
+
+    .modern-page-header h1 {
+        font-size: 26px;
+    }
+
+    .modern-form-card {
+        padding: 22px;
+    }
+
+    .modern-form-actions {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .modern-btn {
+        width: 100%;
+    }
+
+}
+
+</style>
+
+{% endblock %}

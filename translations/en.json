@@ -1,0 +1,159 @@
+{
+    "page_title": "Digital Lost & Found",
+    "app_name": "Digital Lost & Found",
+
+    "nav_home": "Home",
+    "nav_login": "Login",
+    "nav_register": "Register",
+    "nav_dashboard": "Dashboard",
+    "nav_report_lost": "Report Lost",
+    "nav_report_found": "Report Found",
+    "nav_matches": "Matches",
+
+    "language_label": "Language",
+
+    "hero_title": "Digital Lost & Found System",
+    "hero_text": "A simple and smart way to report lost items, report found items, and find possible matches.",
+
+    "report_lost_item": "Report Lost Item",
+    "report_found_item": "Report Found Item",
+
+    "feature_report_lost_title": "Report Lost Item",
+    "feature_report_lost_text": "Report an item that you have lost by providing its name, category, location, date, description, and image.",
+
+    "feature_report_found_title": "Report Found Item",
+    "feature_report_found_text": "If you find someone else's item, report it so the owner can find it.",
+
+    "feature_smart_match_title": "Smart Matching",
+    "feature_smart_match_text": "Our matching system compares lost and found reports to identify possible matches.",
+
+    "latest_lost_items": "Recently Reported Lost Items",
+    "latest_lost_items_text": "Recently reported items that have been lost.",
+
+    "latest_found_items": "Recently Reported Found Items",
+    "latest_found_items_text": "Recently reported items that have been found.",
+
+    "no_lost_items": "No Lost Items Yet",
+    "no_lost_items_text": "No lost items have been reported yet.",
+
+    "no_found_items": "No Found Items Yet",
+    "no_found_items_text": "No found items have been reported yet.",
+
+    "help_find_items_title": "Help Reconnect Lost Items With Their Owners",
+    "help_find_items_text": "Report a lost or found item and help someone recover their belongings.",
+
+    "login_title": "Login",
+    "login_subtitle": "Login to your Digital Lost & Found account.",
+
+    "register_title": "Create Account",
+    "register_subtitle": "Create an account to report and manage lost and found items.",
+
+    "name_label": "Name",
+    "email_label": "Email",
+    "password_label": "Password",
+    "confirm_password_label": "Confirm Password",
+
+    "password_policy": "Use at least 8 characters with uppercase, lowercase, number, and symbol. Example: Lost@123",
+
+    "login_button": "Login",
+    "register_button": "Register",
+    "logout_button": "Logout",
+
+    "remember_me": "Remember me",
+
+    "login_help": "New user?",
+    "register_help": "Already have an account?",
+
+    "go_register": "Create an account",
+    "go_login": "Login here",
+
+    "terms_agreement": "I agree to use the Digital Lost & Found System responsibly.",
+
+    "dashboard_title": "Dashboard",
+    "dashboard_subtitle": "Manage your lost and found reports.",
+
+    "my_lost_items": "My Lost Items",
+    "my_lost_items_text": "Items you have reported as lost.",
+
+    "my_found_items": "My Found Items",
+    "my_found_items_text": "Items you have reported as found.",
+
+    "smart_matching_title": "Smart Matching",
+    "smart_matching_text": "Check whether your lost item matches a found item.",
+
+    "view_matches": "View Possible Matches",
+    "back_to_dashboard": "Back to Dashboard",
+
+    "item_name_label": "Item Name",
+    "category_label": "Category",
+    "location_label": "Location",
+    "date_lost_label": "Date Lost",
+    "date_found_label": "Date Found",
+    "description_label": "Description",
+    "image_label": "Item Image",
+    "status_label": "Status",
+    "reported_on": "Reported on",
+
+    "image_help": "Upload a clear image of the item. Maximum size: 5 MB.",
+
+    "report_lost_title": "Report Lost Item",
+    "report_lost_subtitle": "Provide details about the item you lost so it can be found.",
+
+    "report_found_title": "Report Found Item",
+    "report_found_subtitle": "Provide details about the item you found so the owner can find it.",
+
+    "submit_lost_report": "Submit Lost Report",
+    "submit_found_report": "Submit Found Report",
+
+    "cancel_button": "Cancel",
+
+    "matches_title": "Possible Matches",
+    "matches_subtitle": "Possible matches between your lost items and reported found items.",
+
+    "match_label": "Match",
+    "similarity_label": "Similarity",
+
+    "lost_item_label": "Lost Item",
+    "found_item_label": "Found Item",
+
+    "high_match": "High possibility of a match!",
+    "medium_match": "This may be a possible match.",
+    "low_match": "Some details are similar.",
+
+    "no_matches": "No Matches Found",
+    "no_matches_text": "There are currently no possible matches for your reported items.",
+    "matches_help": "Try reporting your lost or found item with more details.",
+
+    "status_lost": "Lost",
+    "status_found": "Found",
+    "status_matched": "Matched",
+    "status_claimed": "Claimed",
+
+    "success_registered": "Registration successful. You can now login.",
+    "success_login": "Login successful.",
+    "success_logout": "You have been logged out.",
+    "success_lost_report": "Lost item reported successfully.",
+    "success_found_report": "Found item reported successfully.",
+
+    "error_invalid_login": "Invalid email or password.",
+    "error_email_exists": "An account with this email already exists.",
+    "error_password_mismatch": "Passwords do not match.",
+    "error_invalid_password": "Password does not meet the required security rules.",
+    "error_required_fields": "Please fill in all required fields.",
+    "error_invalid_image": "Invalid image file.",
+    "error_file_too_large": "The uploaded file is too large.",
+
+    "footer_text": "Helping people find their lost belongings.",
+
+    "select_category": "Select Category",
+    "mobile_phone": "Mobile Phone",
+    "wallet": "Wallet",
+    "bag": "Bag",
+    "id_card": "ID Card",
+    "keys": "Keys",
+    "documents": "Documents",
+    "electronics": "Electronics",
+    "jewellery": "Jewellery",
+    "clothing": "Clothing",
+    "other": "Other"
+}

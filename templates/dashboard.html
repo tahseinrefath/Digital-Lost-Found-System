@@ -1,0 +1,341 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ t("dashboard_title") }}
+{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-page">
+
+    <div class="dashboard-glow dashboard-glow-one"></div>
+    <div class="dashboard-glow dashboard-glow-two"></div>
+
+    <div class="dashboard-container">
+
+        <!-- ================= HEADER ================= -->
+
+        <section class="dashboard-welcome">
+
+            <div class="welcome-content">
+
+                <span class="welcome-label">
+                    DIGITAL LOST & FOUND
+                </span>
+
+                <h1>
+                    {{ t("dashboard_title") }}
+                </h1>
+
+                <p>
+                    {{ t("dashboard_subtitle") }}
+                </p>
+
+            </div>
+
+            <div class="welcome-icon">
+                ✨
+            </div>
+
+        </section>
+
+
+        <!-- ================= QUICK ACTIONS ================= -->
+
+        <section class="dashboard-actions">
+
+            <a
+                href="{{ url_for('lost.report_lost') }}"
+                class="dashboard-action lost-action"
+            >
+                <div class="action-icon">
+                    🔎
+                </div>
+
+                <div class="action-content">
+                    <span>
+                        LOST ITEM
+                    </span>
+
+                    <h3>
+                        {{ t("report_lost_item") }}
+                    </h3>
+
+                    <p>
+                        Report something you lost
+                    </p>
+                </div>
+
+                <div class="action-arrow">
+                    →
+                </div>
+            </a>
+
+
+            <a
+                href="{{ url_for('found.report_found') }}"
+                class="dashboard-action found-action"
+            >
+                <div class="action-icon">
+                    📦
+                </div>
+
+                <div class="action-content">
+                    <span>
+                        FOUND ITEM
+                    </span>
+
+                    <h3>
+                        {{ t("report_found_item") }}
+                    </h3>
+
+                    <p>
+                        Help someone recover their item
+                    </p>
+                </div>
+
+                <div class="action-arrow">
+                    →
+                </div>
+            </a>
+
+
+            <a
+                href="{{ url_for('match.matches') }}"
+                class="dashboard-action match-action"
+            >
+                <div class="action-icon">
+                    ✨
+                </div>
+
+                <div class="action-content">
+                    <span>
+                        SMART MATCHING
+                    </span>
+
+                    <h3>
+                        {{ t("view_matches") }}
+                    </h3>
+
+                    <p>
+                        Find possible lost & found matches
+                    </p>
+                </div>
+
+                <div class="action-arrow">
+                    →
+                </div>
+            </a>
+
+        </section>
+
+
+        <!-- ================= LOST ITEMS ================= -->
+
+        <section class="dashboard-section">
+
+            <div class="dashboard-section-header">
+
+                <div class="section-heading">
+
+                    <div class="section-heading-icon lost-heading-icon">
+                        🔎
+                    </div>
+
+                    <div>
+                        <span>
+                            YOUR REPORTS
+                        </span>
+
+                        <h2>
+                            {{ t("my_lost_items") }}
+                        </h2>
+
+                        <p>
+                            {{ t("my_lost_items_text") }}
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <a
+                    href="{{ url_for('lost.report_lost') }}"
+                    class="section-add-button lost-add-button"
+                >
+                    + Report Lost
+                </a>
+
+            </div>
+
+
+            {% if lost_items %}
+
+            <div class="dashboard-item-grid">
+
+                {% for item in lost_items %}
+
+                <div class="dashboard-item-wrapper">
+
+                    {% include "item_card.html" %}
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+            {% else %}
+
+            <div class="dashboard-empty">
+
+                <div class="empty-icon">
+                    🔎
+                </div>
+
+                <h3>
+                    {{ t("no_lost_items") }}
+                </h3>
+
+                <p>
+                    {{ t("no_lost_items_text") }}
+                </p>
+
+                <a
+                    href="{{ url_for('lost.report_lost') }}"
+                    class="empty-button lost-empty-button"
+                >
+                    + Report Lost Item
+                </a>
+
+            </div>
+
+            {% endif %}
+
+        </section>
+
+
+        <!-- ================= FOUND ITEMS ================= -->
+
+        <section class="dashboard-section found-dashboard-section">
+
+            <div class="dashboard-section-header">
+
+                <div class="section-heading">
+
+                    <div class="section-heading-icon found-heading-icon">
+                        📦
+                    </div>
+
+                    <div>
+                        <span>
+                            YOUR REPORTS
+                        </span>
+
+                        <h2>
+                            {{ t("my_found_items") }}
+                        </h2>
+
+                        <p>
+                            {{ t("my_found_items_text") }}
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <a
+                    href="{{ url_for('found.report_found') }}"
+                    class="section-add-button found-add-button"
+                >
+                    + Report Found
+                </a>
+
+            </div>
+
+
+            {% if found_items %}
+
+            <div class="dashboard-item-grid">
+
+                {% for item in found_items %}
+
+                <div class="dashboard-item-wrapper">
+
+                    {% include "item_card.html" %}
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+            {% else %}
+
+            <div class="dashboard-empty">
+
+                <div class="empty-icon">
+                    📦
+                </div>
+
+                <h3>
+                    {{ t("no_found_items") }}
+                </h3>
+
+                <p>
+                    {{ t("no_found_items_text") }}
+                </p>
+
+                <a
+                    href="{{ url_for('found.report_found') }}"
+                    class="empty-button found-empty-button"
+                >
+                    + Report Found Item
+                </a>
+
+            </div>
+
+            {% endif %}
+
+        </section>
+
+
+        <!-- ================= SMART MATCHING ================= -->
+
+        <section class="smart-match-banner">
+
+            <div class="smart-match-icon">
+                ✨
+            </div>
+
+            <div class="smart-match-content">
+
+                <span>
+                    SMART MATCHING
+                </span>
+
+                <h2>
+                    {{ t("smart_matching_title") }}
+                </h2>
+
+                <p>
+                    {{ t("smart_matching_text") }}
+                </p>
+
+            </div>
+
+            <a
+                href="{{ url_for('match.matches') }}"
+                class="smart-match-button"
+            >
+                {{ t("view_matches") }}
+                <span>→</span>
+            </a>
+
+        </section>
+
+    </div>
+
+</div>
+
+{% endblock %}

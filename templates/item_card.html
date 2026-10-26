@@ -1,0 +1,664 @@
+{# ============================================================
+   DIGITAL LOST & FOUND SYSTEM
+   ITEM CARD
+   Used for Home Page and Dashboard
+   ============================================================ #}
+
+<div class="item-card">
+
+    <!-- ========================================================
+         ITEM IMAGE
+         ======================================================== -->
+
+    {% if item.get("image") %}
+
+        <img
+            src="{{ url_for('static', filename='uploads/item_images/' ~ item.get('image')) }}"
+            alt="{{ item.get('item_name', 'Item') }}"
+            class="item-card-image"
+        >
+
+    {% else %}
+
+        <div class="item-card-no-image">
+            📦
+        </div>
+
+    {% endif %}
+
+
+    <!-- ========================================================
+         ITEM CONTENT
+         ======================================================== -->
+
+    <div class="item-card-content">
+
+        <!-- Item Name -->
+        <h3>
+            {{ item.get("item_name", "Unknown Item") }}
+        </h3>
+
+
+        <!-- ====================================================
+             PERSON NAME
+             This is the important new section
+             ==================================================== -->
+
+        <div class="item-person-info">
+
+            <span class="item-detail-label">
+                👤 Person Name
+            </span>
+
+            <span class="item-detail-value person-name">
+                {{ item.get("reporter_name", "Unknown") }}
+            </span>
+
+        </div>
+
+
+        <!-- Category -->
+        {% if item.get("category") %}
+
+        <div class="item-detail-row">
+
+            <span class="item-detail-label">
+                🏷️ Category
+            </span>
+
+            <span class="item-detail-value">
+                {{ item.get("category") }}
+            </span>
+
+        </div>
+
+        {% endif %}
+
+
+        <!-- Location -->
+        {% if item.get("location") %}
+
+        <div class="item-detail-row">
+
+            <span class="item-detail-label">
+                📍 Location
+            </span>
+
+            <span class="item-detail-value">
+                {{ item.get("location") }}
+            </span>
+
+        </div>
+
+        {% endif %}
+
+
+        <!-- Phone Number -->
+        {% if item.get("phone") %}
+
+        <div class="item-phone-box">
+
+            <div class="phone-icon">
+                📞
+            </div>
+
+            <div class="phone-content">
+
+                <span class="phone-label">
+                    CONTACT NUMBER
+                </span>
+
+                <a
+                    href="tel:{{ item.get('phone') }}"
+                    class="phone-number"
+                >
+                    {{ item.get("phone") }}
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+
+        <!-- ====================================================
+             LOST DATE
+             ==================================================== -->
+
+        {% if item.get("lost_date") %}
+
+        <div class="item-detail-row">
+
+            <span class="item-detail-label">
+                📅 Date Lost
+            </span>
+
+            <span class="item-detail-value">
+                {{ item.get("lost_date") }}
+            </span>
+
+        </div>
+
+        {% endif %}
+
+
+        <!-- ====================================================
+             FOUND DATE
+             ==================================================== -->
+
+        {% if item.get("found_date") %}
+
+        <div class="item-detail-row">
+
+            <span class="item-detail-label">
+                📅 Date Found
+            </span>
+
+            <span class="item-detail-value">
+                {{ item.get("found_date") }}
+            </span>
+
+        </div>
+
+        {% endif %}
+
+
+        <!-- ====================================================
+             DESCRIPTION
+             ==================================================== -->
+
+        {% if item.get("description") %}
+
+        <div class="item-description">
+
+            <span class="item-detail-label">
+                📝 Description
+            </span>
+
+            <p>
+                {{ item.get("description") }}
+            </p>
+
+        </div>
+
+        {% endif %}
+
+
+        <!-- ====================================================
+             STATUS
+             ==================================================== -->
+
+        {% if item.get("status") %}
+
+        <div class="item-status">
+
+            {% if item.get("status") == "lost" %}
+
+                <span class="status-badge status-lost">
+                    Lost
+                </span>
+
+            {% elif item.get("status") == "found" %}
+
+                <span class="status-badge status-found">
+                    Found
+                </span>
+
+            {% elif item.get("status") == "matched" %}
+
+                <span class="status-badge status-matched">
+                    Matched
+                </span>
+
+            {% elif item.get("status") == "claimed" %}
+
+                <span class="status-badge status-claimed">
+                    Claimed
+                </span>
+
+            {% else %}
+
+                <span class="status-badge">
+                    {{ item.get("status") }}
+                </span>
+
+            {% endif %}
+
+        </div>
+
+        {% endif %}
+
+
+        <!-- ====================================================
+             REPORTED DATE
+             ==================================================== -->
+
+        {% if item.get("created_at") %}
+
+        <div class="reported-date">
+
+            Reported on:
+            {{ item.get("created_at") }}
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+
+<!-- ============================================================
+     ITEM CARD CSS
+     ============================================================ -->
+
+<style>
+
+.item-card {
+
+    width: 100%;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+
+    box-shadow:
+        0 10px 30px rgba(15, 23, 42, 0.07);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+
+}
+
+
+.item-card:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 16px 40px rgba(79, 70, 229, 0.12);
+
+}
+
+
+/* ============================================================
+   IMAGE
+   ============================================================ */
+
+.item-card-image {
+
+    width: 100%;
+
+    height: 210px;
+
+    object-fit: contain;
+
+    background: #f8fafc;
+
+    padding: 15px;
+
+}
+
+
+.item-card-no-image {
+
+    width: 100%;
+
+    height: 210px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #f3f4f6;
+
+    font-size: 60px;
+
+    color: #9ca3af;
+
+}
+
+
+/* ============================================================
+   CONTENT
+   ============================================================ */
+
+.item-card-content {
+
+    padding: 22px;
+
+    text-align: left;
+
+}
+
+
+.item-card-content h3 {
+
+    margin: 0 0 16px;
+
+    color: #111827;
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+}
+
+
+/* ============================================================
+   PERSON NAME
+   ============================================================ */
+
+.item-person-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+
+    margin-bottom: 14px;
+
+    padding: 11px 13px;
+
+    border-radius: 10px;
+
+    background: #eef2ff;
+
+    border: 1px solid #c7d2fe;
+
+}
+
+
+.person-name {
+
+    color: #4338ca;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+}
+
+
+/* ============================================================
+   GENERAL ITEM DETAILS
+   ============================================================ */
+
+.item-detail-row {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+
+    margin-bottom: 10px;
+
+}
+
+
+.item-detail-label {
+
+    color: #111827;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+}
+
+
+.item-detail-value {
+
+    color: #6b7280;
+
+    font-size: 14px;
+
+    word-break: break-word;
+
+}
+
+
+/* ============================================================
+   PHONE
+   ============================================================ */
+
+.item-phone-box {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 14px 0;
+
+    padding: 12px;
+
+    border-radius: 12px;
+
+    background: #f8faff;
+
+    border: 1px solid #c7d2fe;
+
+}
+
+
+.phone-icon {
+
+    width: 34px;
+
+    height: 34px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background: #dbeafe;
+
+    font-size: 18px;
+
+}
+
+
+.phone-content {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+
+}
+
+
+.phone-label {
+
+    color: #6b7280;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.8px;
+
+}
+
+
+.phone-number {
+
+    color: #2563eb;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+}
+
+
+.phone-number:hover {
+
+    text-decoration: underline;
+
+}
+
+
+/* ============================================================
+   DESCRIPTION
+   ============================================================ */
+
+.item-description {
+
+    margin-top: 14px;
+
+    padding-top: 14px;
+
+    border-top: 1px solid #e5e7eb;
+
+}
+
+
+.item-description p {
+
+    margin: 5px 0 0;
+
+    color: #6b7280;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+}
+
+
+/* ============================================================
+   STATUS
+   ============================================================ */
+
+.item-status {
+
+    margin-top: 15px;
+
+}
+
+
+.status-badge {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 6px 13px;
+
+    border-radius: 30px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+}
+
+
+.status-lost {
+
+    background: #fff7ed;
+
+    color: #c2410c;
+
+}
+
+
+.status-found {
+
+    background: #ecfdf5;
+
+    color: #047857;
+
+}
+
+
+.status-matched {
+
+    background: #eef2ff;
+
+    color: #4338ca;
+
+}
+
+
+.status-claimed {
+
+    background: #f3f4f6;
+
+    color: #374151;
+
+}
+
+
+/* ============================================================
+   REPORTED DATE
+   ============================================================ */
+
+.reported-date {
+
+    margin-top: 12px;
+
+    color: #9ca3af;
+
+    font-size: 11px;
+
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 600px) {
+
+    .item-card-content {
+
+        padding: 18px;
+
+    }
+
+
+    .item-card-image {
+
+        height: 190px;
+
+    }
+
+
+    .item-card-no-image {
+
+        height: 190px;
+
+    }
+
+
+    .item-card-content h3 {
+
+        font-size: 18px;
+
+    }
+
+}
+
+</style>
